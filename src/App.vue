@@ -1,36 +1,33 @@
 <template>
   <div id="app">
-    <span>{{count}}</span>
-    <button v-on:click="count++">点我+</button>
-    <button v-on:click="count--">点我-</button>
-    <button v-on:click="add">+++</button>
-    <button v-on:click="sub">---</button>
+    <input v-model="message" placeholder="edit me" />
+    <ul id="example-1">
+      <li v-for="item in Number(message)" v-bind:key="item">
+        <CounterGroup></CounterGroup>
+        </li>
+    </ul>
+    
   </div>
 </template>
 
 <script>
-
+import CounterGroup from './components/CounterGroup.vue'
 export default {
-  name: 'app',
-  data:function(){
+  name: "app",
+  data: function() {
     return {
-      count:0
+      message:0
     };
   },
-  methods:{
-    add:function(){
-      this.count++;
-    },
-    sub:function(){
-      this.count--;
-    }
+  components:{
+    CounterGroup
   }
 };
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
