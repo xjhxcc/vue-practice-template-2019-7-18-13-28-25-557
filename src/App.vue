@@ -1,26 +1,33 @@
 <template>
   <div id="app">
-    <input v-model="message" placeholder="edit me" />
+    请输入数字：<input v-model="message" placeholder="edit me" />
     <ul id="example-1">
       <li v-for="item in Number(message)" v-bind:key="item">
-        <CounterGroup></CounterGroup>
-        </li>
-    </ul>
-    
+        <CounterGroup :title='head' @countSum='countSum'></CounterGroup>
+      </li>
+      <li>the sum is :{{sum}}</li>
+    </ul>   
   </div>
 </template>
 
 <script>
-import CounterGroup from './components/CounterGroup.vue'
+import counterGroup from './components/CounterGroup.vue'
 export default {
   name: "app",
   data: function() {
     return {
-      message:0
+      message:0,
+      head:'数字',
+      sum:0
     };
   },
   components:{
-    CounterGroup
+    "CounterGroup":counterGroup,
+  },
+  methods:{
+    countSum(num){
+      this.sum+=num;
+    }
   }
 };
 </script>
@@ -33,5 +40,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+ul li{
+  list-style:none;
 }
 </style>
