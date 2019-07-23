@@ -17,7 +17,7 @@
 
 <script>
 import counterGroup from './components/CounterGroup.vue';
-import axios from "axios";
+//import axios from "axios";
 export default {
   name: "app",
   data: function() {
